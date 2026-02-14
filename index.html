@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For Fuski 💖</title>
+  <style>
+    body {
+      margin: 0;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-top: 80px;
+      font-size: 40px;
+      color: white;
+    }
+
+    .buttons {
+      margin-top: 40px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.2s;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: white;
+      color: #ff4d6d;
+      position: absolute;
+    }
+
+    #penguinContainer {
+      display: none;
+      margin-top: 30px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    #penguin {
+      width: 220px;
+      animation: bounce 2s infinite;
+    }
+
+    #message {
+      font-size: 28px;
+      color: white;
+      margin-top: 20px;
+    }
+
+    .kiss {
+      position: absolute;
+      font-size: 28px;
+      animation: fly 3s linear forwards;
+    }
+
+    @keyframes fly {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-400px) translateX(50px); opacity: 0; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Will you be my Valentine Fuski? 💖</h1>
+
+  <div class="buttons">
+    <button id="yesBtn">Yes 💕</button>
+    <button id="noBtn">No 😢</button>
+  </div>
+
+  <div id="penguinContainer">
+    <!-- Cute animated penguin GIF -->
+    <img id="penguin" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+    <div id="message">Yaaay Fuski said YES! 💘</div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const penguinContainer = document.getElementById("penguinContainer");
+
+    // Make NO button run away
+    noBtn.addEventListener("mouseover", function() {
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 120);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    // When YES is clicked
+    yesBtn.addEventListener("click", function() {
+      document.querySelector(".buttons").style.display = "none";
+      penguinContainer.style.display = "block";
+
+      // Penguin throws kisses repeatedly
+      setInterval(() => {
+        const kiss = document.createElement("div");
+        kiss.classList.add("kiss");
+        kiss.innerHTML = "💋";
+        kiss.style.left = (window.innerWidth / 2 + (Math.random() * 100 - 50)) + "px";
+        kiss.style.top = (window.innerHeight / 2 + 50) + "px";
+        document.body.appendChild(kiss);
+
+        setTimeout(() => {
+          kiss.remove();
+        }, 3000);
+      }, 500);
+    });
+  </script>
+
+</body>
+</html>
